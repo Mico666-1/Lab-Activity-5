@@ -25,5 +25,4 @@ Frontend Features (Client Side)
 Backend Data Architecture (Server Side)
 * Users Collection: `\id`, `name`, `email`, `department`, `role`, `createdAt`
 * Booths Collection: `_id`, `boothName`, `category`, `totalVotes`
-
-\* \*\*Transactions Collection:\*\* `\_id`, `userId`, `boothId`, `type` (entry/vote/ticket), `timestamp`
+* Transactions Collection: `_id`, `userId`, `boothId`, `type` (entry/vote/ticket), `timestamp`
