@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Foundation Day Digitization API
+  description: API endpoints for attendance, ticket redemptions, and booth voting.
+  version: 1.0.0
+paths:
+  /api/register:
+    post:
+      summary: Register attendee and generate QR identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - department
+              properties:
+                name:
+                  type: string
+                  example: "Juan Dela Cruz"
+                email:
+                  type: string
+                  example: "juan@example.edu.ph"
+                department:
+                  type: string
+                  example: "BSIT"
+      responses:
+        '201':
+          description: Attendee registered successfully
+
+  /api/attendance/checkin:
+    post:
+      summary: Record booth entry scan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - boothId
+              properties:
+                userId:
+                  type: string
+                boothId:
+                  type: string
+      responses:
+        '200':
+          description: Check-in recorded
+
+  /api/vote:
+    post:
+      summary: Submit booth competition vote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - boothId
+              properties:
+                userId:
+                  type: string
+                boothId:
+                  type: string
+      responses:
+        '200':
+          description: Vote counted successfully
+
+  /api/analytics/summary:
+    get:
+      summary: Retrieve real-time attendance statistics
+      responses:
+        '200':
+          description: Summary data retrieved
